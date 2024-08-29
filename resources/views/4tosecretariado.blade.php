@@ -3,149 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Cursos - 4to Secretariado Bilingüe</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <title>4to secretariado</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h2>Lista de Cursos - 4to Secretariado Bilingüe</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Nivel</th>
-                <th>Cupo Máximo</th>
-                <th>Estado</th>
-                <th>Fecha de Creación</th>
-                <th>Fecha de Actualización</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Matemática Comercial</td>
-                <td>Estudio de conceptos matemáticos aplicados al ámbito comercial.</td>
-                <td>4to año</td>
-                <td>30</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Taquigrafía</td>
-                <td>Habilidades en taquigrafía para tomar notas rápidamente.</td>
-                <td>4to año</td>
-                <td>25</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>TIC</td>
-                <td>Uso de Tecnologías de Información y Comunicación.</td>
-                <td>4to año</td>
-                <td>30</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Redacción y Correspondencia</td>
-                <td>Redacción de documentos y correspondencia profesional.</td>
-                <td>4to año</td>
-                <td>25</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Mecanografía</td>
-                <td>Desarrollo de habilidades en mecanografía y escritura rápida.</td>
-                <td>4to año</td>
-                <td>30</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Contabilidad General</td>
-                <td>Fundamentos de contabilidad y su aplicación en el ámbito empresarial.</td>
-                <td>4to año</td>
-                <td>30</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>Matemática Comercial</td>
-                <td>Repetición de conceptos matemáticos aplicados al ámbito comercial.</td>
-                <td>4to año</td>
-                <td>30</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>Inglés Avanzado</td>
-                <td>Desarrollo de habilidades avanzadas en inglés.</td>
-                <td>4to año</td>
-                <td>25</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>Moral</td>
-                <td>Estudio de principios éticos y morales en el contexto profesional.</td>
-                <td>4to año</td>
-                <td>30</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>Lectura</td>
-                <td>Mejora de habilidades de lectura y comprensión de textos.</td>
-                <td>4to año</td>
-                <td>30</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>11</td>
-                <td>Ortocaligrafía</td>
-                <td>Mejora de habilidades ortográficas y caligráficas.</td>
-                <td>4to año</td>
-                <td>25</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container mt-4">
+        <h1 class="text-center">Gestión de Cursos - 4to Secretariado</h1>
+
+        <!-- Mensajes de éxito o error -->
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+
+
+        <!-- Tabla para mostrar los cursos -->
+        <div class="card">
+            <div class="card-header">
+                Lista de Cursos
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Carrera</th>
+                            <th>Nombre del curso</th>
+                            <th>Descripción</th>
+                            <th>Nivel</th>
+                            <th>Cupo Máximo</th>
+                            <th>Estado</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($cursos as $curso)
+                            <tr>
+                                <td>{{ $curso->id }}</td>
+                                <td>{{ $curso->carrera }}</td>
+                                <td>{{ $curso->nombre }}</td>
+                                <td>{{ $curso->descripcion }}</td>
+                                <td>{{ $curso->nivel }}</td>
+                                <td>{{ $curso->cupo_maximo }}</td>
+                                <td>{{ $curso->estado }}</td>
+                                <td>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

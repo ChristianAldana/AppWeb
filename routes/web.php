@@ -72,5 +72,27 @@ Route::get('/6tosecretariado', function () {
 
 
 
+Route::get('/4tocomputacion', [\App\Http\Controllers\CursoController::class, 'index']);
+Route::get('/computacion', [\App\Http\Controllers\CursoController::class, 'computacion']);
 
+
+
+
+Route::get('/cuartoPerito', [\App\Http\Controllers\CursoController::class, 'cuartoPerito']);
+Route::get('/perito', [\App\Http\Controllers\CursoController::class, 'quintoPerito']);
+Route::get('/6toperito', [\App\Http\Controllers\CursoController::class, 'sextoPerito']);
+
+
+
+
+
+Route::get('/4tomagisterio', [\App\Http\Controllers\CursoController::class, 'cuartoMagisterio']);
+Route::get('/magisterio', [\App\Http\Controllers\CursoController::class, 'quintoMagisterio']);
+Route::get('/6tomagisterio', [\App\Http\Controllers\CursoController::class, 'sextoMagisterio']);
+
+
+
+Route::get('/4tosecretariado', [\App\Http\Controllers\CursoController::class, 'cuartoSecretariado']);
+Route::get('/secretariado', [\App\Http\Controllers\CursoController::class, 'quintoSecretariado']);
+Route::get('/6tosecretariado', [\App\Http\Controllers\CursoController::class, 'sextoSecretariado']);
 

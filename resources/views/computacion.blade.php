@@ -3,161 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Cursos - 5to Computación</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <title>5to Computación</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h2>Lista de Cursos - 5to Computación</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Nivel</th>
-                <th>Cupo Máximo</th>
-                <th>Estado</th>
-                <th>Fecha de Creación</th>
-                <th>Fecha de Actualización</th>
-            </tr>
-        </thead>
+    <div class="container mt-4">
+        <h1 class="text-center">Gestión de Cursos - 5to Computación</h1>
 
-        
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Programación Comercial</td>
-                <td>Desarrollo de aplicaciones comerciales.</td>
-                <td>5to año</td>
-                <td>30</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Práctica Supervisada</td>
-                <td>Aplicación práctica de los conocimientos adquiridos.</td>
-                <td>5to año</td>
-                <td>20</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Seminario</td>
-                <td>Seminarios sobre temas actuales en tecnología.</td>
-                <td>5to año</td>
-                <td>25</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Ética</td>
-                <td>Estudio de principios éticos y morales en la tecnología.</td>
-                <td>5to año</td>
-                <td>30</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Administración</td>
-                <td>Principios básicos de administración de empresas.</td>
-                <td>5to año</td>
-                <td>25</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Inglés</td>
-                <td>Curso avanzado de lengua inglesa.</td>
-                <td>5to año</td>
-                <td>30</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>Programación</td>
-                <td>Desarrollo de aplicaciones y software.</td>
-                <td>5to año</td>
-                <td>30</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>TIC</td>
-                <td>Tecnologías de la Información y Comunicación.</td>
-                <td>5to año</td>
-                <td>20</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>Contabilidad</td>
-                <td>Principios y prácticas de contabilidad.</td>
-                <td>5to año</td>
-                <td>25</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>Matemática</td>
-                <td>Estudio avanzado de conceptos matemáticos.</td>
-                <td>5to año</td>
-                <td>20</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>11</td>
-                <td>Moral</td>
-                <td>Estudio de principios morales y éticos.</td>
-                <td>5to año</td>
-                <td>30</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>12</td>
-                <td>Programación II</td>
-                <td>Desarrollo avanzado de aplicaciones.</td>
-                <td>5to año</td>
-                <td>25</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-        </tbody>
-    </table>
+        <!-- Mensajes de éxito o error -->
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+
+
+        <!-- Tabla para mostrar los cursos -->
+        <div class="card">
+            <div class="card-header">
+                Lista de Cursos
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Carrera</th>
+                            <th>Nombre del curso</th>
+                            <th>Descripción</th>
+                            <th>Nivel</th>
+                            <th>Cupo Máximo</th>
+                            <th>Estado</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($cursos as $curso)
+                            <tr>
+                                <td>{{ $curso->id }}</td>
+                                <td>{{ $curso->carrera }}</td>
+                                <td>{{ $curso->nombre }}</td>
+                                <td>{{ $curso->descripcion }}</td>
+                                <td>{{ $curso->nivel }}</td>
+                                <td>{{ $curso->cupo_maximo }}</td>
+                                <td>{{ $curso->estado }}</td>
+                                <td>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

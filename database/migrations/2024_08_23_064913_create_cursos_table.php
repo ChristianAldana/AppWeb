@@ -15,6 +15,7 @@ class CreateCursosTable extends Migration
     {
         Schema::create('cursos', function (Blueprint $table) {
             $table->id(); // ID auto-incrementable para el curso
+            $table->string('carrera'); // Carrera a la que pertenece el curso
             $table->string('nombre'); // Nombre del curso
             $table->text('descripcion'); // Descripción del curso
             $table->string('nivel'); // Nivel en que se cursa el curso, e.g., 4to año, 5to año

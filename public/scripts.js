@@ -1,15 +1,5 @@
 
 
-
-
-
-
-
-
-
-
-
-
 document.querySelectorAll('.menu-item').forEach(item => {
     item.addEventListener('click', function(e) {
         e.preventDefault();

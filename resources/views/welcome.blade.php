@@ -137,7 +137,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Perito en administracion de empresas</h5>
                         <p class="card-text">Encontraras las materias asignadas correspondientes a cada año.</p>
-                        <button class="btn btn-secondary" data-target="/4toperito,/perito,/6toperito">Ver Pensum</button>
+                        <button class="btn btn-secondary" data-target="/cuartoPerito,/perito,/6toperito">Ver Pensum</button>
                         <button class="btn btn-danger mt-2 hide-pensum">Ocultar Pensum</button>
                     </div>
                 </div>

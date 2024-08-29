@@ -3,129 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Cursos - 6to Perito en Administración</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <title>6to perito</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h2>Lista de Cursos - 6to Perito en Administración</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Nivel</th>
-                <th>Cupo Máximo</th>
-                <th>Estado</th>
-                <th>Fecha de Creación</th>
-                <th>Fecha de Actualización</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Presupuesto Nacional I</td>
-                <td>Estudio y elaboración del presupuesto nacional.</td>
-                <td>6to año</td>
-                <td>25</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Práctica Supervisada</td>
-                <td>Aplicación práctica en el campo de la administración.</td>
-                <td>6to año</td>
-                <td>20</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Mercadotecnia III</td>
-                <td>Avanzado en estrategias y técnicas de mercadotecnia.</td>
-                <td>6to año</td>
-                <td>25</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>TIC</td>
-                <td>Tecnologías de la Información y Comunicación.</td>
-                <td>6to año</td>
-                <td>20</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Ética Profesional</td>
-                <td>Principios éticos en el ejercicio profesional.</td>
-                <td>6to año</td>
-                <td>30</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Compras y Suministros</td>
-                <td>Gestión de compras y suministro de bienes.</td>
-                <td>6to año</td>
-                <td>25</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>Desarrollo Nacional</td>
-                <td>Estudio del desarrollo económico y social del país.</td>
-                <td>6to año</td>
-                <td>30</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>Moral</td>
-                <td>Estudio de principios morales en la administración.</td>
-                <td>6to año</td>
-                <td>30</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>Seminario</td>
-                <td>Seminario sobre temas avanzados en administración.</td>
-                <td>6to año</td>
-                <td>25</td>
-                <td>activo</td>
-                <td>2024-08-23 12:00:00</td>
-                <td>2024-08-23 12:00:00</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container mt-4">
+        <h1 class="text-center">Gestión de Cursos - 6to Perito</h1>
+
+
+        <!-- Tabla para mostrar los cursos -->
+        <div class="card">
+            <div class="card-header">
+                Lista de Cursos
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Carrera</th>
+                            <th>Nombre del curso</th>
+                            <th>Descripción</th>
+                            <th>Nivel</th>
+                            <th>Cupo Máximo</th>
+                            <th>Estado</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($cursos as $curso)
+                            <tr>
+                                <td>{{ $curso->id }}</td>
+                                <td>{{ $curso->carrera }}</td>
+                                <td>{{ $curso->nombre }}</td>
+                                <td>{{ $curso->descripcion }}</td>
+                                <td>{{ $curso->nivel }}</td>
+                                <td>{{ $curso->cupo_maximo }}</td>
+                                <td>{{ $curso->estado }}</td>
+                                <td>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
