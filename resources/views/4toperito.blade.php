@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4to perito</title>
+    <title>4to Perito en Administracion</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container mt-4">
-        <h1 class="text-center">Gestión de Cursos - 4to Perito</h1>
-        
+    <div class="container mt-4">
+        <h1 class="text-center">Gestión de Cursos - 4to Perito en Administracion </h1>
         <!-- Tabla para mostrar los cursos -->
         <div class="card">
             <div class="card-header">
@@ -24,25 +23,21 @@
                             <th>Nombre del curso</th>
                             <th>Descripción</th>
                             <th>Nivel</th>
-                            <th>Cupo Máximo</th>
                             <th>Estado</th>
-
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($cursos as $curso)
-                            <tr>
-                                <td>{{ $curso->id }}</td>
-                                <td>{{ $curso->carrera }}</td>
-                                <td>{{ $curso->nombre }}</td>
-                                <td>{{ $curso->descripcion }}</td>
-                                <td>{{ $curso->nivel }}</td>
-                                <td>{{ $curso->cupo_maximo }}</td>
-                                <td>{{ $curso->estado }}</td>
-                                <td>
-                                </td>
-                            </tr>
-                        @endforeach
+                     @foreach($cursos as $curso)
+                        <tr>
+                            <td>{{ $curso->id }}</td>
+                            <td>{{ $curso->carrera_nombre }}</td>
+                            <td>{{ $curso->nombre }}</td>
+                            <td>{{ $curso->descripcion }}</td>
+                            <td>{{ $curso->nivel_nombre }}</td>
+                            <td>{{ $curso->estado_nombre }}</td>
+                        </tr>
+                    @endforeach
+                        </tbody>
                     </tbody>
                 </table>
             </div>

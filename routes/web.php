@@ -22,12 +22,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/computacion', function () {
-    return view('computacion'); 
-});
-Route::get('/4tocomputacion', function () {
-    return view('4tocomputacion');
-});
 
 
 Route::get('/perito', function () {
@@ -95,4 +89,5 @@ Route::get('/6tomagisterio', [\App\Http\Controllers\CursoController::class, 'sex
 Route::get('/4tosecretariado', [\App\Http\Controllers\CursoController::class, 'cuartoSecretariado']);
 Route::get('/secretariado', [\App\Http\Controllers\CursoController::class, 'quintoSecretariado']);
 Route::get('/6tosecretariado', [\App\Http\Controllers\CursoController::class, 'sextoSecretariado']);
+
 

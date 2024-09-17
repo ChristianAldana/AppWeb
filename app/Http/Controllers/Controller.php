@@ -5,122 +5,44 @@ namespace App\Http\Controllers;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use App\Models\Curso; // Asegúrate de incluir el modelo Curso
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
-    function cuartocomputacion()
+
+    public function cuartocomputacion()
     {
+        // Filtrar los cursos por el nivel '4to' y ordenar por nombre
+        $cursos = Curso::whereHas('nivel', function ($query) {
+            $query->where('nivel', '4to');
+        })
+        ->whereHas('carrera', function ($query) {
+            $query->where('nombre', 'BACHILLERATO EN COMPUTACIÓN');
+        })
+        ->orderBy('nombre', 'asc')
+        ->paginate(6);
 
-        $cursos = Curso::where('nivel', '4to')->orderBy('nombre', 'asc')->paginate(6);
-        return view('4tocomputacion', compact('cursos','cursos'));
-
+        return view('4tocomputacion', compact('cursos'));
     }
 
 
-    function computacion()
+    public function computacion()
     {
+        // Filtrar los cursos por el nivel '5to' y ordenar por nombre
+        $cursos = Curso::whereHas('nivel', function ($query) {
+            $query->where('nivel', '4to');
+        })
+        ->whereHas('carrera', function ($query) {
+            $query->where('nombre', 'BACHILLERATO EN COMPUTACIÓN');
+        })
+        ->orderBy('nombre', 'asc')
+        ->paginate(6);
 
-        $cursos = Curso::orderBy('nombre', 'asc')->paginate(5);
-        return view('computacion', compact('cursos','cursos'));
-
+        return view('computacion', compact('cursos'));
     }
-
-
-
 
 
 
     
-    function cuartoPerito()
-    {
-
-        $cursos = Curso::where('nivel', '4to')->orderBy('nombre', 'asc')->paginate(6);
-        return view('4toperito', compact('cursos','cursos'));
-
-    }
-
-   
-    function quintoPerito()
-    {
-
-        $cursos = Curso::where('nivel', '5to')->orderBy('nombre', 'asc')->paginate(6);
-        return view('perito', compact('cursos','cursos'));
-
-    }
-
-
-    function sextoPerito()
-    {
-
-        $cursos = Curso::where('nivel', '6to')->orderBy('nombre', 'asc')->paginate(6);
-        return view('6toperito', compact('cursos','cursos'));
-
-    }
-
-          
-    
-
-      
-    function cuartoMagisterio()
-    {
-
-        $cursos = Curso::where('nivel', '4to')->orderBy('nombre', 'asc')->paginate(6);
-        return view('4tomagisterio', compact('cursos','cursos'));
-
-    }
-
-   
-    function quintoMagisterio()
-    {
-
-        $cursos = Curso::where('nivel', '5to')->orderBy('nombre', 'asc')->paginate(6);
-        return view('magisterio', compact('cursos','cursos'));
-
-    }
-
-
-    function sextoMagisterio()
-    {
-
-        $cursos = Curso::where('nivel', '6to')->orderBy('nombre', 'asc')->paginate(6);
-        return view('6tomagisterio', compact('cursos','cursos'));
-
-    }
-
-
-
-
-
-
-    function cuartoSecretariado()
-    {
-
-        $cursos = Curso::where('nivel', '4to')->orderBy('nombre', 'asc')->paginate(6);
-        return view('4tosecretariado', compact('cursos','cursos'));
-
-    }
-
-   
-    function quintoSecretariado()
-    {
-
-        $cursos = Curso::where('nivel', '5to')->orderBy('nombre', 'asc')->paginate(6);
-        return view('secretariado', compact('cursos','cursos'));
-
-    }
-
-
-    function sextoSecretariado()
-    {
-
-        $cursos = Curso::where('nivel', '6to')->orderBy('nombre', 'asc')->paginate(6);
-        return view('6tosecretariado', compact('cursos','cursos'));
-
-    }
-
-
-
-
-
 }

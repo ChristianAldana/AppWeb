@@ -23,25 +23,21 @@
                             <th>Nombre del curso</th>
                             <th>Descripción</th>
                             <th>Nivel</th>
-                            <th>Cupo Máximo</th>
                             <th>Estado</th>
-
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($cursos as $curso)
-                            <tr>
-                                <td>{{ $curso->id }}</td>
-                                <td>{{ $curso->carrera }}</td>
-                                <td>{{ $curso->nombre }}</td>
-                                <td>{{ $curso->descripcion }}</td>
-                                <td>{{ $curso->nivel }}</td>
-                                <td>{{ $curso->cupo_maximo }}</td>
-                                <td>{{ $curso->estado }}</td>
-                                <td>
-                                </td>
-                            </tr>
-                        @endforeach
+                     @foreach($cursos as $curso)
+                        <tr>
+                            <td>{{ $curso->id }}</td>
+                            <td>{{ $curso->carrera_nombre }}</td>
+                            <td>{{ $curso->nombre }}</td>
+                            <td>{{ $curso->descripcion }}</td>
+                            <td>{{ $curso->nivel_nombre }}</td>
+                            <td>{{ $curso->estado_nombre }}</td>
+                        </tr>
+                    @endforeach
+                        </tbody>
                     </tbody>
                 </table>
             </div>

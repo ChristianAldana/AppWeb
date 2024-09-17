@@ -7,26 +7,37 @@ use Illuminate\Database\Eloquent\Model;
 
 class Curso extends Model
 {
- 
-  // Especificar la tabla asociada a este modelo
-  protected $table = 'cursos';
+    use HasFactory;
 
-  // Indicar la clave primaria de la tabla
-  protected $primaryKey = 'id';
+    // Especificar la tabla asociada a este modelo
+    protected $table = 'curso';
 
-  // Indicar si la clave primaria es auto-incremental (es true por defecto)
-  public $incrementing = true;
+    // Indicar la clave primaria de la tabla
+    protected $primaryKey = 'id';
 
-  // Indicar si las marcas de tiempo (created_at, updated_at) están habilitadas
-  public $timestamps = true;
+    // Indicar si las marcas de tiempo (created_at, updated_at) están habilitadas
+    public $timestamps = true;
 
-  // Especificar los campos que pueden ser llenados masivamente
-  protected $fillable = [
-      'carrera',
-      'nombre',
-      'descripcion',
-      'nivel',
-      'cupo_maximo',
-      'estado'
-  ];
+    // Especificar los campos que pueden ser llenados masivamente
+    protected $fillable = [
+        'carrera', 'nombre', 'descripcion', 'nivel', 'estado'
+    ];
+
+    // Relación con el modelo Carrera
+    public function carrera()
+    {
+        return $this->belongsTo(Carrera::class, 'carrera');
+    }
+
+    // Relación con el modelo Nivel
+    public function nivel()
+    {
+        return $this->belongsTo(Nivel::class, 'nivel');
+    }
+
+    // Relación con el modelo Estado
+    public function estado()
+    {
+        return $this->belongsTo(Estado::class, 'estado');
+    }
 }
