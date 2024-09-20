@@ -12,6 +12,7 @@
     <link href="{{ asset('styles.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    @vite('resources/js/app.js')
 
 </head>
 <body>
@@ -127,6 +128,21 @@
                         <button class="btn btn-secondary" data-target="/4tocomputacion,/computacion">Ver Pensum</button>    
                         <button class="btn btn-danger mt-2 hide-pensum">Ocultar Pensum</button>
 
+                        <div id="app">
+            <cuarto-computacion></cuarto-computacion>
+            <quinto-computacion></quinto-computacion>
+            <cuarto-perito></cuarto-perito>
+            <quinto-perito></quinto-perito>
+            <sexto-perito></sexto-perito>
+            <cuarto-magisterio></cuarto-magisterio>
+            <quinto-magisterio></quinto-magisterio>
+            <sexto-magisterio></sexto-magisterio>
+            <cuarto-secretariado></cuarto-secretariado>
+            <quinto-secretariado></quinto-secretariado>
+            <sexto-secretariado></sexto-magisterio>
+
+        </div>
+    </div>
                     </div>
                 </div>
             </div>
@@ -149,7 +165,7 @@
                         <h5 class="card-title">Magisterio Infantil Intercultural</h5>
                         <p class="card-text">Encontraras las materias asignadas correspondientes a cada año.</p>
                         <button class="btn btn-secondary" data-target="/4tomagisterio,/magisterio,/6tomagisterio">Ver Pensum</button>
-                        <button class="btn btn-danger mt-2 hide-pensum">Ocultar Pensum</button>
+                        <button class="btn btn-danger mt-2 hide-pensum">Ocultar Pensum</button>       
                     </div>
                 </div>
             </div>
@@ -160,7 +176,7 @@
                         <h5 class="card-title">secretariado bilingue español-ingles</h5>
                         <p class="card-text">Encontraras las materias asignadas correspondientes a cada año.</p>
                         <button class="btn btn-secondary" data-target="/4tosecretariado,/secretariado,/6tosecretariado">Ver Pensum</button>
-                        <button class="btn btn-danger mt-2 hide-pensum">Ocultar Pensum</button>
+                        <button class="btn btn-danger mt-2 hide-pensum">Ocultar Pensum</button>   
                     </div>
                 </div>
             </div>

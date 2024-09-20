@@ -64,30 +64,51 @@ Route::get('/6tosecretariado', function () {
 
 
 
+//llamadas al componente
+Route::get('/4tocomputacion', function () {
+    return view('4tocomputacion'); // Carga la vista sin los datos (Vue se encargará de pedirlos)
+});
 
 
-Route::get('/4tocomputacion', [\App\Http\Controllers\CursoController::class, 'index']);
-Route::get('/computacion', [\App\Http\Controllers\CursoController::class, 'computacion']);
-
-
-
-
-Route::get('/cuartoPerito', [\App\Http\Controllers\CursoController::class, 'cuartoPerito']);
-Route::get('/perito', [\App\Http\Controllers\CursoController::class, 'quintoPerito']);
-Route::get('/6toperito', [\App\Http\Controllers\CursoController::class, 'sextoPerito']);
-
+Route::get('/computacion', function () {
+    return view('computacion'); // Carga la vista sin los datos (Vue se encargará de pedirlos)
+});
 
 
 
 
-Route::get('/4tomagisterio', [\App\Http\Controllers\CursoController::class, 'cuartoMagisterio']);
-Route::get('/magisterio', [\App\Http\Controllers\CursoController::class, 'quintoMagisterio']);
-Route::get('/6tomagisterio', [\App\Http\Controllers\CursoController::class, 'sextoMagisterio']);
+// Ruta para la API que devuelve los cursos en JSON
+Route::get('/api/cursos/{year}/{carrera}', [\App\Http\Controllers\CursoController::class, 'getCursos']);
 
 
+// Ruta para la API que devuelve los cursos en JSON
+Route::get('/api/cursos/{year}/{carrera}', [\App\Http\Controllers\CursoController::class, 'computacion']);
 
-Route::get('/4tosecretariado', [\App\Http\Controllers\CursoController::class, 'cuartoSecretariado']);
-Route::get('/secretariado', [\App\Http\Controllers\CursoController::class, 'quintoSecretariado']);
-Route::get('/6tosecretariado', [\App\Http\Controllers\CursoController::class, 'sextoSecretariado']);
 
+// Ruta para la API que devuelve los cursos en JSON
+Route::get('/api/cursos/{year}/{carrera}', [\App\Http\Controllers\CursoController::class, 'cuartoPerito']);
+
+// Ruta para la API que devuelve los cursos en JSON
+Route::get('/api/cursos/{year}/{carrera}', [\App\Http\Controllers\CursoController::class, 'quintoPerito']);
+
+// Ruta para la API que devuelve los cursos en JSON
+Route::get('/api/cursos/{year}/{carrera}', [\App\Http\Controllers\CursoController::class, 'sextoPerito']);
+
+// Ruta para la API que devuelve los cursos en JSON
+Route::get('/api/cursos/{year}/{carrera}', [\App\Http\Controllers\CursoController::class, 'cuartoMagisterio']);
+
+// Ruta para la API que devuelve los cursos en JSON
+Route::get('/api/cursos/{year}/{carrera}', [\App\Http\Controllers\CursoController::class, 'quintoMagisterio']);
+
+// Ruta para la API que devuelve los cursos en JSON
+Route::get('/api/cursos/{year}/{carrera}', [\App\Http\Controllers\CursoController::class, 'sextoMagisterio']);
+
+// Ruta para la API que devuelve los cursos en JSON
+Route::get('/api/cursos/{year}/{carrera}', [\App\Http\Controllers\CursoController::class, 'cuartoSecretariado']);
+
+// Ruta para la API que devuelve los cursos en JSON
+Route::get('/api/cursos/{year}/{carrera}', [\App\Http\Controllers\CursoController::class, 'quintoSecretariado']);
+
+// Ruta para la API que devuelve los cursos en JSON
+Route::get('/api/cursos/{year}/{carrera}', [\App\Http\Controllers\CursoController::class, 'sextoSecretariado']);
 

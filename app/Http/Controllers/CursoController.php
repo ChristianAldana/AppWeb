@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class CursoController extends Controller
 {
-    public function index($year = '4to', $carrera = 'BACHILLERATO EN COMPUTACIÓN')
+    public function getCursos($year = '4to', $carrera = 'BACHILLERATO EN COMPUTACIÓN')
     {
         $cursos = DB::table('curso')
             ->join('carrera', 'curso.carrera', '=', 'carrera.id')
@@ -21,7 +21,8 @@ class CursoController extends Controller
             ->orderBy('curso.id', 'asc') // Ordena por ID
             ->get(); // Obtiene todos los resultados sin paginación
 
-        return view('4tocomputacion', compact('cursos'));
+            return response()->json($cursos);
+            
     }
 
 
@@ -38,7 +39,7 @@ class CursoController extends Controller
             ->orderBy('curso.id', 'asc') // Ordena por ID
             ->get(); // Obtiene todos los resultados sin paginación
 
-        return view('computacion', compact('cursos'));
+            return response()->json($cursos);
     }
 
 
@@ -54,7 +55,7 @@ class CursoController extends Controller
             ->orderBy('curso.id', 'asc') // Ordena por ID
             ->get(); // Obtiene todos los resultados sin paginación
 
-        return view('4toperito', compact('cursos'));
+            return response()->json($cursos);
     }
 
 
@@ -71,7 +72,7 @@ class CursoController extends Controller
             ->orderBy('curso.id', 'asc') // Ordena por ID
             ->get(); // Obtiene todos los resultados sin paginación
 
-        return view('perito', compact('cursos'));
+            return response()->json($cursos);
     }
 
      
@@ -87,7 +88,7 @@ class CursoController extends Controller
             ->orderBy('curso.id', 'asc') // Ordena por ID
             ->get(); // Obtiene todos los resultados sin paginación
 
-        return view('6toperito', compact('cursos'));
+            return response()->json($cursos);
     }
 
 
@@ -105,7 +106,7 @@ class CursoController extends Controller
             ->orderBy('curso.id', 'asc') // Ordena por ID
             ->get(); // Obtiene todos los resultados sin paginación
 
-        return view('4tomagisterio', compact('cursos'));
+            return response()->json($cursos);
     }
 
 
@@ -122,7 +123,7 @@ class CursoController extends Controller
             ->orderBy('curso.id', 'asc') // Ordena por ID
             ->get(); // Obtiene todos los resultados sin paginación
 
-        return view('magisterio', compact('cursos'));
+            return response()->json($cursos);
     }
 
 
@@ -139,7 +140,7 @@ class CursoController extends Controller
             ->orderBy('curso.id', 'asc') // Ordena por ID
             ->get(); // Obtiene todos los resultados sin paginación
 
-        return view('6tomagisterio', compact('cursos'));
+            return response()->json($cursos);
     }
 
 
@@ -155,7 +156,7 @@ class CursoController extends Controller
             ->orderBy('curso.id', 'asc') // Ordena por ID
             ->get(); // Obtiene todos los resultados sin paginación
 
-        return view('4tosecretariado', compact('cursos'));
+            return response()->json($cursos);
     }
 
 
@@ -171,7 +172,7 @@ class CursoController extends Controller
             ->orderBy('curso.id', 'asc') // Ordena por ID
             ->get(); // Obtiene todos los resultados sin paginación
 
-        return view('secretariado', compact('cursos'));
+            return response()->json($cursos);
     }
 
 
@@ -187,7 +188,7 @@ class CursoController extends Controller
             ->orderBy('curso.id', 'asc') // Ordena por ID
             ->get(); // Obtiene todos los resultados sin paginación
 
-        return view('6tosecretariado', compact('cursos'));
+            return response()->json($cursos);
     }
 
 
