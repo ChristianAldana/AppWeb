@@ -10,30 +10,85 @@ import SextoPerito from './components/SextoPerito.vue';
 import CuartoSecretariado from './components/CuartoSecretariado.vue';
 import QuintoSecretariado from './components/QuintoSecretariado.vue';
 import SextoSecretariado from './components/SextoSecretariado.vue';
+import Imagenes from './components/Imagenes.vue'; 
+import Preguntas from './components/Preguntas.vue'; 
 
 
-const app = createApp({
-  // Puedes pasar opciones adicionales si es necesario
+// Montar para Computación
+const appComputacion = createApp({
+  data() {
+    return {
+      mostrarPensum: false, // Estado para controlar la visibilidad del pensum
+    };
+  },
 });
 
-// Registrar el componente globalmente
-app.component('cuarto-computacion', CuartoComputacion);
-app.component('quinto-computacion', QuintoComputacion);
-app.component('cuarto-magisterio', CuartoMagisterio);
-app.component('quinto-magisterio', QuintoMagisterio);
-app.component('sexto-magisterio', SextoMagisterio);
-app.component('cuarto-perito', CuartoPerito);
-app.component('quinto-perito', QuintoPerito);
-app.component('sexto-perito', SextoPerito);
-app.component('cuarto-secretariado', CuartoSecretariado);
-app.component('quinto-secretariado', QuintoSecretariado);
-app.component('sexto-secretariado', SextoSecretariado);
+appComputacion.component('cuarto-computacion', CuartoComputacion);
+appComputacion.component('quinto-computacion', QuintoComputacion);
+appComputacion.mount('#computacion');
+
+
+
+
+
+// Montar para Perito
+const appPerito = createApp({
+  data() {
+    return {
+      mostrarPensum1: false, // Estado para controlar la visibilidad del pensum
+    };
+  },
+});
+
+appPerito.component('cuarto-perito', CuartoPerito);
+appPerito.component('quinto-perito', QuintoPerito);
+appPerito.component('sexto-perito', SextoPerito);
+appPerito.mount('#perito-content');
+
+
+
+
+  // Montar para Magisterio
+const appMagisterio = createApp({
+  data() {
+    return {
+      mostrarPensum2: false, // Estado para controlar la visibilidad del pensum
+    };
+  },
+});
+appMagisterio.component('cuarto-magisterio', CuartoMagisterio);
+appMagisterio.component('quinto-magisterio', QuintoMagisterio);
+appMagisterio.component('sexto-magisterio', SextoMagisterio);
+appMagisterio.mount('#magisterio-content');
 
 
 
 
 
 
+// Montar para Secretariado
+const appSecretariado = createApp({
+  data() {
+    return {
+      mostrarPensum3: false, // Estado para controlar la visibilidad del pensum
+    };
+  },
+});
+appSecretariado.component('cuarto-secretariado', CuartoSecretariado);
+appSecretariado.component('quinto-secretariado', QuintoSecretariado);
+appSecretariado.component('sexto-secretariado', SextoSecretariado);
+appSecretariado.mount('#secretariado-content');
 
-// Montar la aplicación Vue
-app.mount('#app');
+
+
+// Montar para imagenes
+const appImagenes = createApp({});
+appImagenes.component('imagenes', Imagenes);
+appImagenes.mount('#imagenes-content');
+
+
+
+//Montar el componente de preguntas
+const appPreguntas = createApp({});
+appPreguntas.component('preguntas', Preguntas);
+appPreguntas.mount('#preguntas-component'); 

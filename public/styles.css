@@ -265,8 +265,9 @@ body.dark-mode #mission-vision {
 
     /* Estilo para la galería de imágenes */
 .gallery-img {
-    width: 100%;
-    height: auto;
+    width: 300px; /* Establece un ancho fijo */
+    height: 200px; /* Establece una altura fija */
+    object-fit: cover; /* Esto asegura que las imágenes llenen el contenedor sin distorsionarse */
     cursor: pointer;
     transition: transform 0.3s ease;
 }
@@ -276,18 +277,15 @@ body.dark-mode #mission-vision {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.modal-content {
-    background-color: #f8f9fa;
-    border-radius: 10px;
+.row {
+    display: flex; /* Asegúrate de que las columnas estén en una fila */
+    justify-content: center; /* Centra las imágenes horizontalmente */
 }
 
-.modal-body {
-    text-align: center;
-}
-
-.modal-body img {
-    max-width: 100%;
-    height: auto;
+.col-md-4 {
+    display: flex; /* Asegúrate de que cada columna use flexbox */
+    justify-content: center; /* Centra el contenido dentro de cada columna */
+    align-items: center; /* Centra el contenido verticalmente */
 }
 
 

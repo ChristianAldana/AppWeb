@@ -25,7 +25,7 @@ class CursoController extends Controller
             
     }
 
-
+//
 
     public function computacion($year = '5to', $carrera = 'BACHILLERATO EN COMPUTACIÓN')
     {

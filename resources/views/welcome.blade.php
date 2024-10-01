@@ -105,6 +105,7 @@
         <!-- Menú Lateral -->
         <div class="col-md-3">
         <h3 class="mb-4">Carreras Disponibles</h3>
+        <input type="text" id="search-input" class="form-control mb-3" placeholder="Buscar carrera o año" onkeyup="filterCards()">
             <div class="list-group mb-3">
                 <a href="#" class="list-group-item list-group-item-action menu-item" data-target="bachiller-content">BACHILLERATOS</a>
                 <a href="#" class="list-group-item list-group-item-action menu-item" data-target="perito-content">PERITO EN ADMINISTRACION</a>
@@ -116,146 +117,103 @@
                 
             </div>
         </div>
-      
-        <!-- Contenido de Tarjetas -->
-        <div class="col-md-9">
-            <div id="bachiller-content" class="card-container">
-                <div class="card mb-4">
-                    <img src="CCR8.jpeg" class="card-img-top" alt="Imagen 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Bachillerato en ciencias y letras con orientación en computación </h5>
-                        <p class="card-text">Encontraras las materias asignadas correspondientes a cada año.</p>
-                        <button class="btn btn-secondary" data-target="/4tocomputacion,/computacion">Ver Pensum</button>    
-                        <button class="btn btn-danger mt-2 hide-pensum">Ocultar Pensum</button>
+      <!-- Columna para las Tarjetas -->
+      <div class="col-md-9">
+            <div id="computacion">
+                <div id="bachiller-content" class="card-container">
+                    <div class="card mb-4">
+                        <img src="CCR8.jpeg" class="card-img-top" alt="Imagen 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Bachillerato en ciencias y letras con orientación en computación</h5>
+                            <p class="card-text">Encontrarás las materias asignadas correspondientes a cada año.</p>
+                            <button class="btn btn-secondary" @click="mostrarPensum = true">Ver Pensum</button>
+                            <button class="btn btn-danger mt-2" @click="mostrarPensum = false">Ocultar Pensum</button>
 
-                        <div id="app">
-            <cuarto-computacion></cuarto-computacion>
-            <quinto-computacion></quinto-computacion>
-            <cuarto-perito></cuarto-perito>
-            <quinto-perito></quinto-perito>
-            <sexto-perito></sexto-perito>
-            <cuarto-magisterio></cuarto-magisterio>
-            <quinto-magisterio></quinto-magisterio>
-            <sexto-magisterio></sexto-magisterio>
-            <cuarto-secretariado></cuarto-secretariado>
-            <quinto-secretariado></quinto-secretariado>
-            <sexto-secretariado></sexto-magisterio>
-
-        </div>
-    </div>
+                            <!-- Condicional para mostrar los componentes de pensum -->
+                            <div v-if="mostrarPensum">
+                                <cuarto-computacion></cuarto-computacion>
+                                <quinto-computacion></quinto-computacion>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- Otros cards aquí -->
+
             <div id="perito-content" class="card-container" style="display:none;">
                 <div class="card mb-4">
                     <img src="CCR4.jpeg" class="card-img-top" alt="Imagen 2">
                     <div class="card-body">
-                        <h5 class="card-title">Perito en administracion de empresas</h5>
-                        <p class="card-text">Encontraras las materias asignadas correspondientes a cada año.</p>
-                        <button class="btn btn-secondary" data-target="/cuartoPerito,/perito,/6toperito">Ver Pensum</button>
-                        <button class="btn btn-danger mt-2 hide-pensum">Ocultar Pensum</button>
+                        <h5 class="card-title">Perito en administración de empresas</h5>
+                        <p class="card-text">Encontrarás las materias asignadas correspondientes a cada año.</p>
+                        <button class="btn btn-secondary" @click="mostrarPensum1 = true">Ver Pensum</button>
+                        <button class="btn btn-danger mt-2" @click="mostrarPensum1 = false">Ocultar Pensum</button>
+
+                        <!-- Condicional para mostrar los componentes de pensum -->
+                        <div v-if="mostrarPensum1">
+                            <cuarto-perito></cuarto-perito>
+                            <quinto-perito></quinto-perito>
+                            <sexto-perito></sexto-perito>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div id="magisterio-content" class="card-container" style="display:none;">
                 <div class="card mb-4">
                     <img src="MEII.jpeg" class="card-img-top" alt="Imagen 3">
                     <div class="card-body">
                         <h5 class="card-title">Magisterio Infantil Intercultural</h5>
-                        <p class="card-text">Encontraras las materias asignadas correspondientes a cada año.</p>
-                        <button class="btn btn-secondary" data-target="/4tomagisterio,/magisterio,/6tomagisterio">Ver Pensum</button>
-                        <button class="btn btn-danger mt-2 hide-pensum">Ocultar Pensum</button>       
+                        <p class="card-text">Encontrarás las materias asignadas correspondientes a cada año.</p>
+                        <button class="btn btn-secondary" @click="mostrarPensum2 = true">Ver Pensum</button>
+                        <button class="btn btn-danger mt-2" @click="mostrarPensum2 = false">Ocultar Pensum</button>
+
+                        <!-- Condicional para mostrar los componentes de pensum -->
+                        <div v-if="mostrarPensum2">
+                            <cuarto-magisterio></cuarto-magisterio>
+                            <quinto-magisterio></quinto-magisterio>
+                            <sexto-magisterio></sexto-magisterio>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div id="secretariado-content" class="card-container" style="display:none;">
                 <div class="card mb-4">
                     <img src="https://colegioitaliano.edu.gt/sites/default/files/secre1.jpg" class="card-img-top" alt="Imagen 4">
                     <div class="card-body">
-                        <h5 class="card-title">secretariado bilingue español-ingles</h5>
-                        <p class="card-text">Encontraras las materias asignadas correspondientes a cada año.</p>
-                        <button class="btn btn-secondary" data-target="/4tosecretariado,/secretariado,/6tosecretariado">Ver Pensum</button>
-                        <button class="btn btn-danger mt-2 hide-pensum">Ocultar Pensum</button>   
+                        <h5 class="card-title">Secretariado Bilingüe Español-Inglés</h5>
+                        <p class="card-text">Encontrarás las materias asignadas correspondientes a cada año.</p>
+                        <button class="btn btn-secondary" @click="mostrarPensum3 = true">Ver Pensum</button>
+                        <button class="btn btn-danger mt-2" @click="mostrarPensum3 = false">Ocultar Pensum</button>
+
+                        <!-- Condicional para mostrar los componentes de pensum -->
+                        <div v-if="mostrarPensum3">
+                            <cuarto-secretariado></cuarto-secretariado>
+                            <quinto-secretariado></quinto-secretariado>
+                            <sexto-secretariado></sexto-secretariado>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Contenedor para mostrar el contenido cargado dinámicamente -->
-            <div id="dynamicContent"></div>
         </div>
-    </div>
+    
+    </div> 
 </div>
 
+                    <!-- Mando a llamar componente de imagen -->
+                    <div id="imagenes-content">
+                        <imagenes></imagenes> 
+                    </div>
 
 
 
-
-    <div class="container mt-4">
-    <h2>70 ANIVERSARIO</h2>
-    <div class="row">
-        <div class="col-md-4">
-            <img src="CCR10.jpeg" class="img-thumbnail gallery-img" alt="Laboratorio de Computación">
-        </div>
-        <div class="col-md-4">
-            <img src="CCR11.jpeg" class="img-thumbnail gallery-img" alt="Laboratorio de Biología">
-        </div>
-        <div class="col-md-4">
-            <img src="CCR13.jpeg" class="img-thumbnail gallery-img" alt="Laboratorio de Biología">
-        </div>
-        <div class="col-md-4">
-            <img src="CCR4.jpeg" class="img-thumbnail gallery-img" alt="Laboratorio de Biología">
-        </div>
-        <div class="col-md-4">
-            <img src="LOGO.jpeg" class="img-thumbnail gallery-img" alt="Laboratorio de Biología">
-        </div>
-        <div class="col-md-4">
-            <img src="CCR14.jpeg" class="img-thumbnail gallery-img" alt="Laboratorio de Biología">
-        </div>
-      
-    </div>
-</div>
-
-
-<!-- Modal para la vista ampliada -->
-<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="imageModalLabel">Imagen Ampliada</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="" id="modalImage" class="img-fluid">
-            </div>
-        </div>
-    </div>
-</div>
+                    <!-- Mando a llamar componente de imagen -->
+                    <div id="preguntas-component">
+                        <preguntas></preguntas>
+                    </div>
 
 
 
-
-
-        <!-- FAQs Añade más preguntas según sea necesario -->
-<div class="container mt-4" id="faq-section">
-<div class="container mt-4">
-    <h2>Preguntas Frecuentes</h2>
-    <div class="accordion" id="faqAccordion">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    ¿Cuál es el horario de atención?
-                </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                    Nuestro horario de atención es de lunes a viernes, de 8:00 AM a 4:00 PM.
-                </div>
-            </div>
-        </div>
-        <!-- Añade más preguntas según sea necesario -->
-    </div>
-</div>
 
        <!-- Sección de Redes Sociales -->
 <!-- Sección de Redes Sociales -->

@@ -251,25 +251,24 @@ document.querySelector('.menu-item').click();
 
 
 
+    function filterCards() {
+        const input = document.getElementById('search-input').value.toLowerCase();
+        const cards = document.querySelectorAll('.card-container');
 
-
-
-
-
-//CRUD
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.edit-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const id = this.getAttribute('data-id');
-            fetch(`/cursos/${id}/edit`)
-                .then(response => response.json())
-                .then(data => {
-                    document.querySelector('#nombre').value = data.nombre;
-                    document.querySelector('#descripcion').value = data.descripcion;
-                    document.querySelector('#nivel').value = data.nivel;
-                    document.querySelector('#cupo_maximo').value = data.cupo_maximo;
-                    document.querySelector('#cursoForm').action = `/cursos/${id}`;
-                });
+        cards.forEach(card => {
+            const title = card.querySelector('.card-title').textContent.toLowerCase();
+            const content = card.querySelector('.card-text').textContent.toLowerCase();
+            if (title.includes(input) || content.includes(input)) {
+                card.style.display = 'block'; // Muestra la tarjeta si hay coincidencia
+            } else {
+                card.style.display = 'none'; // Oculta la tarjeta si no hay coincidencia
+            }
         });
-    });
-});
+    }
+
+    function showAllCards() {
+        const cards = document.querySelectorAll('.card-container');
+        cards.forEach(card => {
+            card.style.display = 'block'; // Muestra todas las tarjetas
+        });
+    }
