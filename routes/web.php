@@ -12,17 +12,20 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome'); // Asegúrate de que esta vista exista
 });
 
+// Rutas de autenticación
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-
+// Rutas protegidas por autenticación
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/welcome', function () {
+        return view('welcome'); 
+    });
+});
 
 Route::get('/perito', function () {
     return view('perito'); 
@@ -112,3 +115,18 @@ Route::get('/api/cursos/{year}/{carrera}', [\App\Http\Controllers\CursoControlle
 // Ruta para la API que devuelve los cursos en JSON
 Route::get('/api/cursos/{year}/{carrera}', [\App\Http\Controllers\CursoController::class, 'sextoSecretariado']);
 
+
+Route::get('/carreras', [CarreraController::class, 'index']);
+Route::get('/niveles', [NivelController::class, 'index']);
+Route::get('/estados', [EstadoController::class, 'index']);
+
+use App\Http\Controllers\EstudianteController;
+
+Route::get('/estudiantes', [EstudianteController::class, 'index']);
+Route::get('/estudiantes/{id}', [EstudianteController::class, 'show']);
+Route::post('/estudiantes', [EstudianteController::class, 'store']);
+Route::put('/estudiantes/{id}', [EstudianteController::class, 'update']);
+Route::delete('/estudiantes/{id}', [EstudianteController::class, 'destroy']);
+
+Route::get('/estudiantes/create', [EstudianteController::class, 'create']);
+Route::post('/estudiantes', [EstudianteController::class, 'store']);

@@ -12,6 +12,7 @@
     <link href="{{ asset('styles.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @vite('resources/js/app.js')
 
 </head>
@@ -42,6 +43,33 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#faq-section">PREGUNTAS</a>
                     </li>
+                    <!-- Opciones de Inicio de Sesión y Registro -->
+                    @if (Auth::check())
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                Cerrar Sesión
+                            </a>
+                        </div>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="btn btn-primary ms-3" href="{{ route('login') }}">Iniciar Sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-secondary ms-2" href="{{ route('register') }}">Registrarse</a>
+                    </li>
+                @endif
                 </ul>
             </div>
         </div>
@@ -199,6 +227,13 @@
     
     </div> 
 </div>
+
+                       <!-- Contenedor para montar el componente de estudiantes -->
+                       <div id="estudiantes-content">
+                        <crear-estudiante></crear-estudiante>
+                        <editar-estudiante></editar-estudiante>
+                        <mostrar-estudiante></mostrar-estudiante>
+                        </div>
 
                     <!-- Mando a llamar componente de imagen -->
                     <div id="imagenes-content">

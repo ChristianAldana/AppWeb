@@ -12,6 +12,9 @@ import QuintoSecretariado from './components/QuintoSecretariado.vue';
 import SextoSecretariado from './components/SextoSecretariado.vue';
 import Imagenes from './components/Imagenes.vue'; 
 import Preguntas from './components/Preguntas.vue'; 
+import CrearEstudiante from './components/CrearEstudiante.vue'; 
+import EditarEstudiante from './components/EditarEstudiante.vue';
+import MostrarEstudiante from './components/MostrarEstudiante.vue';
 
 
 // Montar para Computación
@@ -92,3 +95,12 @@ appImagenes.mount('#imagenes-content');
 const appPreguntas = createApp({});
 appPreguntas.component('preguntas', Preguntas);
 appPreguntas.mount('#preguntas-component'); 
+
+
+const appEstudiantes = createApp({});
+appEstudiantes.component('crear-estudiante', CrearEstudiante);
+appEstudiantes.component('editar-estudiante', EditarEstudiante);
+appEstudiantes.component('mostrar-estudiante', MostrarEstudiante);
+
+// Montar la aplicación en el div correspondiente para cada componente
+appEstudiantes.mount('#estudiantes-content');
