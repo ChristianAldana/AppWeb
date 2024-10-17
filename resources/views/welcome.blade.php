@@ -235,6 +235,16 @@
                         <mostrar-estudiante></mostrar-estudiante>
                         </div>
 
+
+                        
+                       <!-- Contenedor para montar el componente de estudiantes -->
+                       <div id="profesores-content">
+                        <crear-profesor></crear-profesor>
+                        <editar-profesor></editar-profesor>
+                        <mostrar-profesor></mostrar-profesor>
+                        </div>
+
+
                     <!-- Mando a llamar componente de imagen -->
                     <div id="imagenes-content">
                         <imagenes></imagenes> 

@@ -53,6 +53,7 @@
 
 <script>
 import axios from 'axios';
+import Swal from 'sweetalert2'; // Importa SweetAlert2
 
 export default {
     data() {
@@ -66,7 +67,7 @@ export default {
                 nivel: null,
                 estado: null,
             },
-            estudiantes: [], 
+            estudiantes: [],
             carreras: [],
             niveles: [],
             estados: [],
@@ -74,40 +75,65 @@ export default {
     },
     created() {
         this.cargarDatos();
-        this.cargarEstudiantes();
     },
     methods: {
         async cargarDatos() {
-            const response = await axios.get('/api/estudiantes/create');
-            this.carreras = response.data.carreras;
-            this.niveles = response.data.niveles;
-            this.estados = response.data.estados;
+            try {
+                const response = await axios.get('/api/estudiantes/create');
+                this.carreras = response.data.carreras;
+                this.niveles = response.data.niveles;
+                this.estados = response.data.estados;
+                this.cargarEstudiantes();
+            } catch (error) {
+                console.error("Error al cargar datos:", error);
+                Swal.fire({
+                    title: '¡Error!',
+                    text: 'Error al cargar datos de carreras, niveles o estados',
+                    icon: 'error',
+                });
+            }
         },
         async cargarEstudiantes() {
             try {
                 const response = await axios.get('/api/estudiantes');
                 this.estudiantes = response.data;
             } catch (error) {
-                console.error('Error al cargar los estudiantes:', error);
+                console.error(error);
+                await Swal.fire({
+                    title: '¡Error!',
+                    text: 'Error al cargar los estudiantes',
+                    icon: 'error',
+                });
             }
         },
         async cargarDatosEstudiante() {
-            try {
-                const estudianteResponse = await axios.get(`/api/estudiantes/${this.estudiante.carnet}`);
-                this.estudiante = estudianteResponse.data;
-            } catch (error) {
-                console.error('Error al cargar los datos del estudiante:', error);
+            const est = this.estudiantes.find(est => est.carnet === this.estudiante.carnet);
+            if (est) {
+                this.estudiante.nombre = est.nombre;
+                this.estudiante.apellido = est.apellido;
+                this.estudiante.edad = est.edad;
+                this.estudiante.carrera = est.carrera;
+                this.estudiante.nivel = est.nivel;
+                this.estudiante.estado = est.estado;
             }
         },
         async actualizarEstudiante() {
             try {
                 await axios.put(`/api/estudiantes/${this.estudiante.carnet}`, this.estudiante);
-                alert('Estudiante actualizado con éxito');
+                await Swal.fire({
+                    title: '¡Éxito!',
+                    text: 'Estudiante actualizado con éxito',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar',
+                });
                 this.resetForm();
-                this.$router.push('/mostrar-estudiantes');
             } catch (error) {
-                console.error('Error al actualizar:', error.response.data);
-                alert('Error al actualizar el estudiante: ' + error.response.data.error);
+                console.error(error);
+                await Swal.fire({
+                    title: '¡Error!',
+                    text: 'Error al actualizar el estudiante',
+                    icon: 'error',
+                });
             }
         },
         resetForm() {

@@ -35,6 +35,7 @@
 
 <script>
 import axios from 'axios';
+import Swal from 'sweetalert2'; // Importa SweetAlert2
 
 export default {
     data() {
@@ -48,29 +49,50 @@ export default {
     methods: {
         async cargarEstudiantes() {
             try {
-                const response = await axios.get('/api/estudiantes'); // Asegúrate de tener esta ruta en tu controlador
-                this.estudiantes = response.data; // Aquí ya no necesitas hacer el mapeo
+                const response = await axios.get('/api/estudiantes');
+                this.estudiantes = response.data;
             } catch (error) {
                 console.error(error);
-                alert('Error al cargar los estudiantes');
+                await Swal.fire({
+                    title: '¡Error!',
+                    text: 'Error al cargar los estudiantes',
+                    icon: 'error',
+                });
             }
         },
         editarEstudiante(id) {
-            this.$router.push(`/editar-estudiante/${id}`); // Redirige al formulario de edición
+            this.$router.push(`/editar-estudiante/${id}`);
         },
         async eliminarEstudiante(id) {
-            if (confirm('¿Estás seguro de que deseas eliminar este estudiante?')) {
+            const { value: result } = await Swal.fire({
+                title: '¿Estás seguro?',
+                text: '¿Deseas eliminar este estudiante?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar',
+            });
+
+            if (result) {
                 try {
-                    await axios.delete(`/api/estudiantes/${id}`); // Asegúrate de tener esta ruta en tu controlador
-                    alert('Estudiante eliminado con éxito');
-                    this.cargarEstudiantes(); // Recargar la lista de estudiantes
+                    await axios.delete(`/api/estudiantes/${id}`);
+                    await Swal.fire({
+                        title: '¡Éxito!',
+                        text: 'Estudiante eliminado con éxito',
+                        icon: 'success',
+                        confirmButtonText: 'Aceptar',
+                    });
+                    this.cargarEstudiantes();
                 } catch (error) {
                     console.error(error);
-                    alert('Error al eliminar el estudiante');
+                    await Swal.fire({
+                        title: '¡Error!',
+                        text: 'Error al eliminar el estudiante',
+                        icon: 'error',
+                    });
                 }
             }
         },
     },
 };
 </script>
-

@@ -15,7 +15,9 @@ import Preguntas from './components/Preguntas.vue';
 import CrearEstudiante from './components/CrearEstudiante.vue'; 
 import EditarEstudiante from './components/EditarEstudiante.vue';
 import MostrarEstudiante from './components/MostrarEstudiante.vue';
-
+import CrearProfesor from './components/Profesor/CrearProfesor.vue';
+import EditarProfesor from './components/Profesor/EditarProfesor.vue';
+import MostrarProfesor from './components/Profesor/MostrarProfesor.vue';
 
 // Montar para Computación
 const appComputacion = createApp({
@@ -104,3 +106,16 @@ appEstudiantes.component('mostrar-estudiante', MostrarEstudiante);
 
 // Montar la aplicación en el div correspondiente para cada componente
 appEstudiantes.mount('#estudiantes-content');
+
+
+
+// Crear la aplicación para profesores
+const appProfesores = createApp({});
+
+// Registrar los componentes de profesores
+appProfesores.component('crear-profesor', CrearProfesor);
+appProfesores.component('editar-profesor', EditarProfesor);
+appProfesores.component('mostrar-profesor', MostrarProfesor);
+
+// Montar la aplicación en el div correspondiente para cada componente
+appProfesores.mount('#profesores-content');

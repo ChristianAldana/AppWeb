@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\EstudianteController;
 
 /*
@@ -28,3 +28,12 @@ Route::get('/estudiantes/create', [EstudianteController::class, 'create']);
 Route::get('/estudiantes/{carnet}', [EstudianteController::class, 'show']); 
 Route::put('/estudiantes/{carnet}', [EstudianteController::class, 'update']); 
 Route::delete('/estudiantes/{id}', [EstudianteController::class, 'destroy']);
+
+
+// Rutas de profesores
+Route::get('/profesor', [ProfesorController::class, 'index']);
+Route::post('/profesor', [ProfesorController::class, 'store']);
+Route::get('/profesor/create', [ProfesorController::class, 'create']);
+Route::get('/profesor/{dpi}', [ProfesorController::class, 'show']);
+Route::put('/profesor/{dpi}', [ProfesorController::class, 'update']);
+Route::delete('/profesor/{id}', [ProfesorController::class, 'destroy']);

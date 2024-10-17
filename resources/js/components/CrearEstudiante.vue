@@ -52,6 +52,7 @@
 
 <script>
 import axios from 'axios';
+import Swal from 'sweetalert2'; // Importa SweetAlert2
 
 export default {
     data() {
@@ -82,17 +83,30 @@ export default {
                 this.estados = response.data.estados;
             } catch (error) {
                 console.error("Error al cargar datos:", error);
-                alert('Error al cargar datos de carreras, niveles o estados');
+                Swal.fire({
+                    title: '¡Error!',
+                    text: 'Error al cargar datos de carreras, niveles o estados',
+                    icon: 'error',
+                });
             }
         },
         async guardarEstudiante() {
             try {
                 await axios.post('/api/estudiantes', this.estudiante);
-                alert('Estudiante registrado con éxito');
+                await Swal.fire({
+                    title: '¡Éxito!',
+                    text: 'Estudiante registrado con éxito',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar',
+                });
                 this.resetForm();
             } catch (error) {
                 console.error(error);
-                alert('Error al registrar el estudiante');
+                await Swal.fire({
+                    title: '¡Error!',
+                    text: 'Error al registrar el estudiante',
+                    icon: 'error',
+                });
             }
         },
         resetForm() {

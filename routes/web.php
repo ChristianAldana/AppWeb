@@ -130,3 +130,4 @@ Route::delete('/estudiantes/{id}', [EstudianteController::class, 'destroy']);
 
 Route::get('/estudiantes/create', [EstudianteController::class, 'create']);
 Route::post('/estudiantes', [EstudianteController::class, 'store']);
+
