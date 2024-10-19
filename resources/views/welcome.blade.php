@@ -237,12 +237,20 @@
 
 
                         
-                       <!-- Contenedor para montar el componente de estudiantes -->
+                       <!-- Contenedor para montar el componente de profesores -->
                        <div id="profesores-content">
                         <crear-profesor></crear-profesor>
                         <editar-profesor></editar-profesor>
                         <mostrar-profesor></mostrar-profesor>
                         </div>
+
+                        <!-- Contenedor para montar el componente de notas -->
+                       <div id="notas-content">
+                        <crear-nota></crear-nota>
+                        <editar-nota></editar-nota>
+                        <mostrar-nota></mostrar-nota>
+                        </div>
+
 
 
                     <!-- Mando a llamar componente de imagen -->

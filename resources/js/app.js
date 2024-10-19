@@ -18,6 +18,9 @@ import MostrarEstudiante from './components/MostrarEstudiante.vue';
 import CrearProfesor from './components/Profesor/CrearProfesor.vue';
 import EditarProfesor from './components/Profesor/EditarProfesor.vue';
 import MostrarProfesor from './components/Profesor/MostrarProfesor.vue';
+import CrearNota from './components/Nota/CrearNota.vue';
+import EditarNota from './components/Nota/EditarNota.vue';
+import MostrarNota from './components/Nota/MostrarNota.vue';
 
 // Montar para Computación
 const appComputacion = createApp({
@@ -119,3 +122,15 @@ appProfesores.component('mostrar-profesor', MostrarProfesor);
 
 // Montar la aplicación en el div correspondiente para cada componente
 appProfesores.mount('#profesores-content');
+
+
+// Crear la aplicación para notas
+const appNotas = createApp({});
+
+// Registrar los componentes de notas
+appNotas.component('crear-nota', CrearNota);
+appNotas.component('editar-nota', EditarNota);
+appNotas.component('mostrar-nota', MostrarNota);
+
+// Montar la aplicación en el div correspondiente para cada componente
+appNotas.mount('#notas-content');
