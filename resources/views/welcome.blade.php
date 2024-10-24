@@ -66,9 +66,7 @@
                     <li class="nav-item">
                         <a class="btn btn-primary ms-3" href="{{ route('login') }}">Iniciar Sesión</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="btn btn-outline-secondary ms-2" href="{{ route('register') }}">Registrarse</a>
-                    </li>
+                
                 @endif
                 </ul>
             </div>
@@ -125,7 +123,15 @@
     <!-- Otros contenidos -->
 </div>
 
-
+<!-- Contenido del botón para ir al dashboard -->
+@if (Auth::check())
+        <div class="container mt-4 text-center">
+            <h2>Acceso Rápido</h2>
+            <a href="{{ Auth::user()->role_id == 1 ? route('dashboard.admin') : (Auth::user()->role_id == 2 ? route('dashboard.teacher') : route('dashboard.student')) }}" class="btn btn-success">
+                Ir a mi Dashboard
+            </a>
+        </div>
+    @endif
     
    <!-- Contenedor Principal para el Menú Lateral y las Tarjetas -->
 <div id="main-content-container" class="container mt-4 bg-light p-4">
@@ -154,8 +160,10 @@
                         <div class="card-body">
                             <h5 class="card-title">Bachillerato en ciencias y letras con orientación en computación</h5>
                             <p class="card-text">Encontrarás las materias asignadas correspondientes a cada año.</p>
-                            <button class="btn btn-secondary" @click="mostrarPensum = true">Ver Pensum</button>
-                            <button class="btn btn-danger mt-2" @click="mostrarPensum = false">Ocultar Pensum</button>
+                           <div class="d-flex">
+    <button class="btn btn-secondary me-2" @click="mostrarPensum = true" style="width: 100px;">Ver Pensum</button>
+    <button class="btn btn-danger" @click="mostrarPensum = false" style="width: 100px;">Ocultar Pensum</button>
+</div>
 
                             <!-- Condicional para mostrar los componentes de pensum -->
                             <div v-if="mostrarPensum">
@@ -173,9 +181,10 @@
                     <div class="card-body">
                         <h5 class="card-title">Perito en administración de empresas</h5>
                         <p class="card-text">Encontrarás las materias asignadas correspondientes a cada año.</p>
-                        <button class="btn btn-secondary" @click="mostrarPensum1 = true">Ver Pensum</button>
-                        <button class="btn btn-danger mt-2" @click="mostrarPensum1 = false">Ocultar Pensum</button>
-
+                        <div class="d-flex">
+    <button class="btn btn-secondary me-2" @click="mostrarPensum1 = true" style="width: 100px;">Ver Pensum</button>
+    <button class="btn btn-danger" @click="mostrarPensum1 = false" style="width: 100px;">Ocultar Pensum</button>
+</div>
                         <!-- Condicional para mostrar los componentes de pensum -->
                         <div v-if="mostrarPensum1">
                             <cuarto-perito></cuarto-perito>
@@ -192,9 +201,10 @@
                     <div class="card-body">
                         <h5 class="card-title">Magisterio Infantil Intercultural</h5>
                         <p class="card-text">Encontrarás las materias asignadas correspondientes a cada año.</p>
-                        <button class="btn btn-secondary" @click="mostrarPensum2 = true">Ver Pensum</button>
-                        <button class="btn btn-danger mt-2" @click="mostrarPensum2 = false">Ocultar Pensum</button>
-
+                        <div class="d-flex">
+    <button class="btn btn-secondary me-2" @click="mostrarPensum2 = true" style="width: 100px;">Ver Pensum</button>
+    <button class="btn btn-danger" @click="mostrarPensum2 = false" style="width: 100px;">Ocultar Pensum</button>
+</div>
                         <!-- Condicional para mostrar los componentes de pensum -->
                         <div v-if="mostrarPensum2">
                             <cuarto-magisterio></cuarto-magisterio>
@@ -211,9 +221,10 @@
                     <div class="card-body">
                         <h5 class="card-title">Secretariado Bilingüe Español-Inglés</h5>
                         <p class="card-text">Encontrarás las materias asignadas correspondientes a cada año.</p>
-                        <button class="btn btn-secondary" @click="mostrarPensum3 = true">Ver Pensum</button>
-                        <button class="btn btn-danger mt-2" @click="mostrarPensum3 = false">Ocultar Pensum</button>
-
+                        <div class="d-flex">
+    <button class="btn btn-secondary me-2" @click="mostrarPensum3 = true" style="width: 100px;">Ver Pensum</button>
+    <button class="btn btn-danger" @click="mostrarPensum3 = false" style="width: 100px;">Ocultar Pensum</button>
+</div>
                         <!-- Condicional para mostrar los componentes de pensum -->
                         <div v-if="mostrarPensum3">
                             <cuarto-secretariado></cuarto-secretariado>
@@ -228,30 +239,7 @@
     </div> 
 </div>
 
-                       <!-- Contenedor para montar el componente de estudiantes -->
-                       <div id="estudiantes-content">
-                        <crear-estudiante></crear-estudiante>
-                        <editar-estudiante></editar-estudiante>
-                        <mostrar-estudiante></mostrar-estudiante>
-                        </div>
-
-
-                        
-                       <!-- Contenedor para montar el componente de profesores -->
-                       <div id="profesores-content">
-                        <crear-profesor></crear-profesor>
-                        <editar-profesor></editar-profesor>
-                        <mostrar-profesor></mostrar-profesor>
-                        </div>
-
-                        <!-- Contenedor para montar el componente de notas -->
-                       <div id="notas-content">
-                        <crear-nota></crear-nota>
-                        <editar-nota></editar-nota>
-                        <mostrar-nota></mostrar-nota>
-                        </div>
-
-
+                    
 
                     <!-- Mando a llamar componente de imagen -->
                     <div id="imagenes-content">

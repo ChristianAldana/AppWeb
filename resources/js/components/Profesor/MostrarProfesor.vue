@@ -8,7 +8,7 @@
           <th>Nombre</th>
           <th>Apellido</th>
           <th>Número de Contacto</th>
-          <th>Carreras y Cursos</th> <!-- Combinar carreras y cursos en una sola columna -->
+          <th>Carreras y Cursos</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -39,8 +39,7 @@
             </table>
           </td>
           <td>
-            <button @click="editarProfesor(profesor.dpi)">Editar</button>
-            <button @click="eliminarProfesor(profesor.dpi)">Eliminar</button>
+            <button class="delete-btn" @click="eliminarProfesor(profesor.dpi)">Eliminar</button>
           </td>
         </tr>
       </tbody>
@@ -149,13 +148,13 @@ table {
 }
 
 th, td {
-  border: 1px solid #ddd;
+  border: 2px solid #4CAF50; /* Bordes de color verde */
   padding: 8px;
   text-align: left;
 }
 
 th {
-  background-color: #f2f2f2;
+  background-color: #f9f9f9;
 }
 
 ul {
@@ -174,20 +173,33 @@ ul {
 }
 
 .carreras-table th, .carreras-table td {
-  border: 1px solid #ddd;
+  border: 2px solid #4CAF50; /* Bordes de color verde para la tabla anidada */
   padding: 5px;
 }
 
 button {
   margin-right: 5px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
   padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #45a049;
+.edit-btn {
+  background-color: #28a745; /* Verde para editar */
+  color: white;
+}
+
+.delete-btn {
+  background-color: #dc3545; /* Rojo para eliminar */
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #218838; /* Verde más oscuro al pasar el ratón */
+}
+
+.delete-btn:hover {
+  background-color: #c82333; /* Rojo más oscuro al pasar el ratón */
 }
 </style>

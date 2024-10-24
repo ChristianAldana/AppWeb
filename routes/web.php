@@ -27,55 +27,30 @@ Route::group(['middleware' => 'auth'], function () {
     });
 });
 
-Route::get('/perito', function () {
-    return view('perito'); 
-});
-Route::get('/4toperito', function () {
-    return view('4toperito');
-});
-Route::get('/6toperito', function () {
-    return view('6toperito'); 
-});
 
 
+    // routes/web.php
+    // Solo accesible para admin
+    Route::get('/dashboard/admin', function () {
+        return view('admin.administrador'); // Asegúrate de que esta es la ruta correcta
+    })->name('dashboard.admin')->middleware('role:admin');
+
+    // Solo accesible para teacher
+    Route::get('/dashboard/teacher', function () {
+        return view('admin.teacher'); // Asegúrate de que la vista admin.teacher existe
+    })->name('dashboard.teacher')->middleware('role:teacher');
+
+    // Solo accesible para student
+    Route::get('/dashboard/student', function () {
+        return view('admin.student'); // Asegúrate de que la vista admin.student existe
+    })->name('dashboard.student')->middleware('role:student');
 
 
-Route::get('/4tomagisterio', function () {
-    return view('4tomagisterio'); 
-});
-Route::get('/magisterio', function () {
-    return view('magisterio');
-});
-Route::get('/6tomagisterio', function () {
-    return view('6tomagisterio'); 
-});
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('welcome')->middleware('guest'); // Solo accesible para usuarios no autenticados
 
 
-
-
-
-
-Route::get('/4tosecretariado', function () {
-    return view('4tosecretariado'); 
-});
-Route::get('/secretariado', function () {
-    return view('secretariado');
-});
-Route::get('/6tosecretariado', function () {
-    return view('6tosecretariado'); 
-});
-
-
-
-//llamadas al componente
-Route::get('/4tocomputacion', function () {
-    return view('4tocomputacion'); // Carga la vista sin los datos (Vue se encargará de pedirlos)
-});
-
-
-Route::get('/computacion', function () {
-    return view('computacion'); // Carga la vista sin los datos (Vue se encargará de pedirlos)
-});
 
 
 

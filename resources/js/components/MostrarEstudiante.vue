@@ -1,9 +1,9 @@
 <template>
     <div class="table-container">
-        <h2>Lista de Estudiantes</h2>
-        <table>
+        <h2 class="text-primary">Lista de Estudiantes</h2>
+        <table class="table table-bordered table-striped">
             <thead>
-                <tr>
+                <tr class="table-primary">
                     <th>Carnet</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
@@ -24,8 +24,7 @@
                     <td>{{ estudiante.nivel_nombre }}</td>
                     <td>{{ estudiante.estado_nombre }}</td>
                     <td>
-                        <button @click="editarEstudiante(estudiante.id)">Editar</button>
-                        <button @click="eliminarEstudiante(estudiante.id)">Eliminar</button>
+                        <button @click="eliminarEstudiante(estudiante.id)" class="btn btn-danger">Eliminar</button>
                     </td>
                 </tr>
             </tbody>
@@ -96,3 +95,24 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+.table-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.table {
+    border: 2px solid #4e73df; /* Borde más grueso */
+}
+.table th, .table td {
+    border: 2px solid #4e73df; /* Bordes más gruesos para celdas */
+}
+.table-primary {
+    background-color: #4e73df; /* Color de fondo del encabezado */
+    color: white; /* Color del texto del encabezado */
+}
+</style>

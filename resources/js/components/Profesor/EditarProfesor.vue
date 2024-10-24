@@ -1,26 +1,30 @@
 <template>
   <div class="form-container">
-    <h2>Editar Profesor</h2>
+    <h2 class="text-center text-success">Editar Profesor</h2>
     <form @submit.prevent="actualizarProfesor">
-      <div class="form-group">
-        <label for="dpi">DPI:</label>
-        <select v-model="profesor.dpi" @change="cargarDatosProfesor" required>
-          <option v-for="prof in profesoresUnicos" :key="prof.dpi" :value="prof.dpi">
-            {{ prof.dpi }}
-          </option>
-        </select>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="dpi">DPI:</label>
+          <select v-model="profesor.dpi" @change="cargarDatosProfesor" required class="form-control">
+            <option v-for="prof in profesoresUnicos" :key="prof.dpi" :value="prof.dpi">
+              {{ prof.dpi }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="nombre">Nombre:</label>
+          <input type="text" v-model="profesor.nombre" required class="form-control" />
+        </div>
       </div>
-      <div class="form-group">
-        <label for="nombre">Nombre:</label>
-        <input type="text" v-model="profesor.nombre" required />
-      </div>
-      <div class="form-group">
-        <label for="apellido">Apellido:</label>
-        <input type="text" v-model="profesor.apellido" required />
-      </div>
-      <div class="form-group">
-        <label for="numero_contacto">Número de contacto:</label>
-        <input type="text" v-model="profesor.numero_contacto" required />
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="apellido">Apellido:</label>
+          <input type="text" v-model="profesor.apellido" required class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="numero_contacto">Número de contacto:</label>
+          <input type="text" v-model="profesor.numero_contacto" required class="form-control" />
+        </div>
       </div>
       <div class="form-group">
         <label for="carreras">Carreras:</label>
@@ -42,10 +46,19 @@
       </div>
       <div class="form-group">
         <label for="cursos">Cursos:</label>
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            v-model="cursoFiltro"
+            @input="filtrarCursos"
+            placeholder="Buscar cursos..."
+            class="form-control"
+          />
+        </div>
         <div class="dropdown">
           <button class="select-btn">Seleccionar Cursos</button>
           <div class="dropdown-content">
-            <div v-for="curso in cursos" :key="curso.id" class="dropdown-item">
+            <div v-for="curso in cursosFiltrados" :key="curso.id" class="dropdown-item">
               <label>
                 <input
                   type="checkbox"
@@ -81,9 +94,15 @@ export default {
       profesores: [],
       carreras: [],
       cursos: [],
+      cursoFiltro: '', // Variable para filtrar cursos
     };
   },
   computed: {
+    cursosFiltrados() {
+      return this.cursos.filter(curso =>
+        curso.nombre.toLowerCase().includes(this.cursoFiltro.toLowerCase())
+      );
+    },
     profesoresUnicos() {
       const uniqueDpis = new Set();
       return this.profesores.filter(prof => {
@@ -165,20 +184,41 @@ export default {
         carreras: [],
         cursos: [],
       };
+      this.cursoFiltro = ''; // Resetear el filtro de cursos
+    },
+    filtrarCursos() {
+      // Esta función se ejecuta automáticamente al escribir en el campo de búsqueda.
+      // No se necesita implementar nada aquí, ya que el filtro se aplica a través de la propiedad computada.
     },
   },
 };
 </script>
 
 <style scoped>
-.dropdown {
-  position: relative;
-  display: inline-block;
-  width: 100%; /* O ajustar según tu diseño */
+.form-container {
+  padding: 20px;
+  border: 2px solid #28a745; /* Borde verde */
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px; /* Espaciado entre filas */
+}
+
+.form-group {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.form-group:last-child {
+  margin-right: 0;
 }
 
 .select-btn {
-  background-color: #4CAF50; /* Color diferente al de actualizar */
+  background-color: #28a745; /* Color del botón de seleccionar */
   color: white;
   padding: 10px;
   font-size: 16px;
@@ -216,5 +256,12 @@ export default {
 .dropdown-item {
   padding: 8px 12px; /* Espaciado interno para cada elemento */
 }
+
+.dropdown-item:hover {
+  background-color: #f1f1f1; /* Fondo al pasar el ratón */
+}
+
+.dropdown-item input {
+  margin-right: 10px;
+}
 </style>
- 

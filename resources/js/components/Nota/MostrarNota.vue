@@ -1,14 +1,14 @@
 <template>
     <div class="table-container">
         <h2>Lista de Notas</h2>
-        <table>
+        <table class="tabla-notas">
             <thead>
                 <tr>
                     <th>Carrera</th>
                     <th>Curso</th>
                     <th>Estudiante</th>
                     <th>Nota Final</th>
-                    <th>Acciones</th> <!-- Nueva columna para acciones -->
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,7 +19,7 @@
                     <td>{{ nota.nota_final }}</td>
                     <td>
                         <!-- Botón de Eliminar -->
-                        <button @click="eliminarNota(nota.id)">Eliminar</button>
+                        <button @click="eliminarNota(nota.id)" class="btn-eliminar">Eliminar</button>
                     </td>
                 </tr>
             </tbody>
@@ -78,54 +78,46 @@ export default {
 
 <style scoped>
 .table-container {
-  padding: 20px;
+    padding: 20px;
+    max-width: 800px; /* Limita el ancho máximo */
+    margin: 0 auto; /* Centra el contenedor */
+    border: 2px solid #9B59B6; /* Borde morado */
+    border-radius: 8px;
+    background-color: #f9f9f9; /* Fondo claro */
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+h2 {
+    text-align: center;
+    color: #9B59B6; /* Título en morado */
+    margin-bottom: 20px;
 }
 
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+.tabla-notas {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-th {
-  background-color: #f2f2f2;
+.tabla-notas th, .tabla-notas td {
+    border: 1px solid #9B59B6; /* Borde morado para las celdas */
+    padding: 10px; /* Espaciado más cómodo */
+    text-align: left;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.cursos-list > li {
-  margin-left: 20px; /* Añade un margen a los cursos para que queden anidados bajo cada carrera */
-}
-
-.carreras-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px; /* Añade un margen superior para separar la tabla anidada */
-}
-
-.carreras-table th, .carreras-table td {
-  border: 1px solid #ddd;
-  padding: 5px;
+.tabla-notas th {
+    background-color: #8A2BE2; /* Fondo morado para encabezados */
+    color: white; /* Color de texto para encabezados */
 }
 
 button {
-  margin-right: 5px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
+    background-color: #8A2BE2; /* Morado para el botón de eliminar */
+    color: white;
+    border: none;
+    padding: 8px 12px; /* Espaciado en el botón */
+    cursor: pointer;
+    border-radius: 4px; /* Bordes redondeados */
 }
 
 button:hover {
-  background-color: #45a049;
+    background-color: #7A1FD2; /* Un morado más oscuro para el efecto hover */
 }
 </style>
