@@ -4,37 +4,59 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User; // Asegúrate de importar el modelo User
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
+{public function register(Request $request)
 {
-    public function login(Request $request)
-    {
-        $credentials = $request->only('email', 'password');
-
-        $validator = Validator::make($credentials, [
-            'email' => 'required|email',
-            'password' => 'required',
+    try {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed'
+        ]);
+        $user = User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']),
         ]);
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
+        $token = $user->createToken('auth_token')->plainTextToken;
 
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-            $token = $user->createToken('YourAppName')->plainTextToken;
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+        ]);
 
-            return response()->json(['token' => $token, 'user' => $user]);
-        }
-
-        return response()->json(['error' => 'Unauthorized'], 401);
-    }
-
-    public function logout(Request $request)
-    {
-        $request->user()->currentAccessToken()->delete();
-        return response()->json(['message' => 'Logged out successfully']);
+    } catch (\Exception $e) {
+        return response()->json([
+            'error' => 'Error al registrar el usuario: ' . $e->getMessage()
+        ], 500);
     }
 }
+
+    public function login(Request $request)
+    {
+        try {
+            if (!Auth::attempt($request->only('email', 'password'))) {
+                return response()->json([
+                    'message' => 'Unauthorized'
+                ], 401);
+            }
+
+            $user = User::where('email', $request['email'])->firstOrFail();
+
+            $token = $user->createToken('auth_token')->plainTextToken;
+
+            return response()->json([
+                'access_token' => $token,
+                'token_type' => 'Bearer',
+            ]);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'Error al iniciar sesión: ' . $e->getMessage()
+            ], 500);
+        }
+    } }

@@ -95,14 +95,3 @@ Route::get('/carreras', [CarreraController::class, 'index']);
 Route::get('/niveles', [NivelController::class, 'index']);
 Route::get('/estados', [EstadoController::class, 'index']);
 
-use App\Http\Controllers\EstudianteController;
-
-Route::get('/estudiantes', [EstudianteController::class, 'index']);
-Route::get('/estudiantes/{id}', [EstudianteController::class, 'show']);
-Route::post('/estudiantes', [EstudianteController::class, 'store']);
-Route::put('/estudiantes/{id}', [EstudianteController::class, 'update']);
-Route::delete('/estudiantes/{id}', [EstudianteController::class, 'destroy']);
-
-Route::get('/estudiantes/create', [EstudianteController::class, 'create']);
-Route::post('/estudiantes', [EstudianteController::class, 'store']);
-
